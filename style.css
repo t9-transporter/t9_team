@@ -1,0 +1,124 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+
+.name {
+  position: absolute;
+  top: -4rem;
+  left: 11rem;
+}
+
+.spinner {
+  width: 30rem;
+  height: 30rem;
+  border-radius: 50%;
+  border: 3px solid red;
+  position: relative;
+  margin: 5rem 5rem;
+}
+
+.switcher {
+  display: flex;
+  padding-left: 40rem;
+}
+
+.tasks {
+  position: relative;
+  height: 100%;
+  /* Вращение барабана */
+  transition: 3s;
+  transition-timing-function: ease-in-out;
+}
+
+.task-item {
+  position: absolute;
+  padding-left: 2.5rem;
+  left: 15rem;
+  top: 14.5rem;
+  transform-origin: 0 50% 0;
+}
+
+.task-item2 {
+  transform: rotate(30deg);
+}
+
+.task-item3 {
+  transform: rotate(60deg);
+}
+
+.task-item4 {
+  transform: rotate(90deg);
+}
+
+.task-item5 {
+  transform: rotate(120deg);
+}
+
+.task-item6 {
+  transform: rotate(150deg);
+}
+
+.task-item7 {
+  transform: rotate(180deg);
+}
+
+.task-item8 {
+  transform: rotate(210deg);
+}
+
+.task-item9 {
+  transform: rotate(240deg);
+}
+
+.task-item10 {
+  transform: rotate(270deg);
+}
+
+.task-item11 {
+  transform: rotate(300deg);
+}
+
+.task-item12 {
+  transform: rotate(330deg);
+}
+
+.arrow {
+  width: 40%;
+  top: 9rem;
+  /* Вращение стрелки */
+  transition: 3s;
+  transition-timing-function: ease-in-out;
+}
+
+.start-btn {
+  position: absolute;
+  top: 13rem;
+  left: 13rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: rgb(71, 71, 255);
+  color: white;
+  border: none;
+  box-shadow: 1px 2px 4px black;
+}
+
+.start-btn:focus {
+  outline: none;
+}
+
+.start-btn:hover {
+  transform: scale(1.1);
+  transition: 0.3s ease-in-out;
+  box-shadow: 2px 4px 8px black;
+}
+
+#result {
+  position: absolute;
+  top: 32rem;
+  left: 11rem;
+}
