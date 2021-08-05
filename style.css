@@ -1,21 +1,24 @@
 body {
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-wrap: wrap-reverse;
+  display: grid;
+  font-family: "Roboto", sans-serif;
 }
 
 .name {
   position: absolute;
   top: -4rem;
-  left: 11rem;
+  left: 8rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: large;
 }
 
 .spinner {
   width: 30rem;
   height: 30rem;
   border-radius: 50%;
-  border: 3px solid red;
+  border: 10px solid rgb(71, 71, 255);
   position: relative;
   margin: 5rem 5rem;
 }
@@ -86,11 +89,19 @@ body {
 }
 
 .arrow {
+  /* Стрелка картинкой */
   width: 40%;
   top: 9rem;
+  /* Стрелка CSS
+  position: absolute;
+  width: 10rem;
+  top: 15rem;
+  left: 20rem;
+  border: 5px solid rgb(155, 2, 2); */
   /* Вращение стрелки */
   transition: 3s;
   transition-timing-function: ease-in-out;
+  opacity: 0.7;
 }
 
 .start-btn {
@@ -119,6 +130,21 @@ body {
 
 #result {
   position: absolute;
-  top: 32rem;
-  left: 11rem;
+  width: 30rem;
+  top: 4rem;
+  left: 40rem;
+}
+
+#punish {
+  position: absolute;
+  width: 30rem;
+  top: 6rem;
+  left: 40rem;
+}
+
+#roll {
+  position: absolute;
+  width: 30rem;
+  top: 2rem;
+  left: 40rem;
 }
