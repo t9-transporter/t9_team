@@ -2,18 +2,32 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Roboto", sans-serif;
+  background-image: url("./5053309.jpg");
+  background-size: cover;
+  background-repeat: repeat-y;
+  background-color: rgb(70, 70, 70);
+}
+
+.number {
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
 }
 
 .content {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 16rem 16rem 1fr;
   grid-template-rows: 3rem 3rem 3rem 3rem 6rem 6rem 6rem 3rem 3rem;
   gap: 1rem;
+  justify-content: center;
+  margin: 1rem auto auto 1rem;
+  min-width: 64rem;
 }
 
 .switcher {
-  grid-column: 3/5;
-  grid-row: 1/2;
+  padding-left: 5rem;
+  grid-column: 3/4;
+  grid-row: 8/9;
 }
 
 .name {
@@ -23,16 +37,23 @@ body {
   text-align: center;
   grid-column: 1/3;
   grid-row: 1/2;
+  color: orange;
+  font-size: 2rem;
 }
 
 .spinner {
   width: 30rem;
   height: 30rem;
   border-radius: 50%;
-  border: 10px solid rgb(71, 71, 255);
+  border: 10px solid orange;
   position: relative;
   grid-column: 1/3;
   grid-row: 2/9;
+  background-color: rgb(252, 244, 228);
+}
+
+.spinner:hover {
+  box-shadow: rgba(255, 255, 255, 0.5) 6px 8px 12px;
 }
 
 .tasks {
@@ -98,7 +119,7 @@ body {
 .arrow {
   /* Стрелка картинкой */
   width: 40%;
-  top: 9rem;
+  top: 9.25rem;
   /* Стрелка CSS
   position: absolute;
   width: 10rem;
@@ -136,19 +157,141 @@ body {
 }
 
 #timer {
-  grid-column: 3/5;
+  padding-left: 1rem;
+  grid-column: 3/4;
   grid-row: 2/3;
+  color: rgb(172, 113, 3);
+  font-family: cursive;
+  font-style: italic;
+  font-weight: bold;
 }
 
 #roll {
-  grid-column: 3/5;
+  padding-left: 1rem;
+  grid-column: 3/4;
   grid-row: 3/4;
+  color: rgb(172, 113, 3);
+  font-family: cursive;
+  font-style: italic;
+  font-weight: bold;
 }
 
 .randomizer {
+  padding-left: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  grid-column: 3/5;
+  grid-column: 3/4;
   grid-row: 4/8;
+  color: rgb(172, 113, 3);
+  font-family: cursive;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.book {
+  grid-column: 3/4;
+  grid-row: 1/9;
+  background-image: url("./book.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+@media (max-device-width: 900px) {
+  body {
+    font-size: 14px;
+  }
+
+  .content {
+    grid-template-columns: 13rem 13rem;
+    grid-template-rows: 3rem 3rem 3rem 3rem 6rem 6rem 6rem 3rem 2rem 2rem 2rem 2rem 5rem 10rem 10rem;
+    gap: 0.5rem;
+    text-align: center;
+    margin: 0.5rem 0 0 0;
+    min-width: 24rem;
+  }
+
+  .name {
+    grid-column: 1/3;
+    grid-row: 1/2;
+  }
+
+  .spinner {
+    grid-column: 1/3;
+    grid-row: 2/9;
+    left: -2.5rem;
+  }
+
+  .switcher {
+    padding-left: 0rem;
+    grid-column: 1/3;
+    grid-row: 15/16;
+    align-self: center;
+  }
+
+  #timer {
+    padding-left: 0rem;
+    grid-column: 1/3;
+    grid-row: 10/11;
+    align-self: center;
+  }
+
+  #roll {
+    padding-left: 0rem;
+    grid-column: 1/3;
+    grid-row: 11/12;
+  }
+
+  .randomizer {
+    padding-left: 0rem;
+    gap: 0.5rem;
+    grid-column: 1/3;
+    grid-row: 12/15;
+  }
+
+  .book {
+    grid-column: 1/3;
+    grid-row: 9/16;
+    background-image: url("./book.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+}
+
+@media (max-device-width: 639px) {
+  body {
+    font-size: 12px;
+  }
+
+  .content {
+    grid-template-columns: 12rem 12rem;
+    grid-template-rows: 5rem 3rem 3rem 3rem 3rem 3rem 6rem 3rem 2rem 2rem 2rem 2rem 5rem 10rem 10rem;
+    gap: 0.5rem;
+    text-align: center;
+    margin: 0.5rem 0 0 0;
+  }
+
+  .spinner {
+    width: 24rem;
+    height: 24rem;
+    left: 0;
+  }
+
+  .task-item {
+    left: 12rem;
+    top: 11.5rem;
+  }
+
+  .arrow {
+    width: 35%;
+    top: 7.9rem;
+  }
+
+  .start-btn {
+    position: absolute;
+    top: 9.9rem;
+    left: 10rem;
+  }
 }
