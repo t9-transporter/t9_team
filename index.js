@@ -7,7 +7,7 @@ let start = document.getElementsByClassName("start-btn");
 let arrow = document.getElementsByClassName("tasks");
 
 let date1 = Date.now();
-let date2 = new Date("August 20, 2021 21:45:00");
+let date2 = new Date("August 20, 2021 22:00:00");
 let deltaRemain = (date2 - date1) / 1000 / 60 / 60;
 let deltaDelay = (date1 - date2) / 1000 / 60;
 // let deltaDelayFinal = 0;

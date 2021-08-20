@@ -2,6 +2,7 @@
 @import "./styles/logo-small.css";
 @import "./styles/content.css";
 @import "./styles/home.css";
+@import "./styles/superGame.css";
 
 body {
   margin: 0;
