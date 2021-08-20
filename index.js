@@ -7,15 +7,21 @@ let start = document.getElementsByClassName("start-btn");
 let arrow = document.getElementsByClassName("tasks");
 
 let date1 = Date.now();
-// let date2 = new Date("August 11, 2021 11:30:00");
-let date2 = new Date("August 11, 2021 19:30:00");
+let date2 = new Date("August 20, 2021 15:45:00");
 let deltaRemain = (date2 - date1) / 1000 / 60 / 60;
 let deltaDelay = (date1 - date2) / 1000 / 60;
+// let deltaDelayFinal = 0;
 let days = Math.floor(Math.floor(deltaRemain) / 24);
 let hours = Math.floor(deltaRemain) - days * 24;
 let timer = document.getElementById("timer");
+let timerHome = document.getElementById("timerHome");
 let taskPizza = document.getElementById("taskPizza");
 let punishment = document.getElementById("punishment");
+let homeBtn1 = document.getElementById("confirmBtn1");
+let homeBtn2 = document.getElementById("confirmBtn2");
+let home = document.getElementsByClassName("home");
+let loader = document.getElementsByClassName("loader");
+let content = document.getElementsByClassName("content");
 
 let deltaResult = () => {
   date1 < date2
@@ -29,8 +35,57 @@ let deltaResult = () => {
         " минут(ы)")
     : (timer.innerHTML = "Опоздание " + Math.floor(deltaDelay) + " минут(ы)");
 };
-
 deltaResult();
+
+let homeDeltaResult = () => {
+  let date1 = Date.now();
+  let deltaRemain = (date2 - date1) / 1000 / 60 / 60;
+  let deltaDelay = (date1 - date2) / 1000 / 60;
+  let days = Math.floor(Math.floor(deltaRemain) / 24);
+  let hours = Math.floor(deltaRemain) - days * 24;
+  date1 < date2
+    ? (timerHome.innerHTML =
+        "Осталось: " +
+        days +
+        " день(дней) " +
+        hours +
+        " час(ов) " +
+        Math.floor((deltaRemain - Math.floor(deltaRemain)) * 60) +
+        " минут(ы)")
+    : (timerHome.innerHTML =
+        "Опоздание " + Math.floor(deltaDelay) + " минут(ы)");
+};
+
+homeDeltaResult();
+
+setInterval(() => {
+  homeDeltaResult();
+}, 30000);
+
+homeBtn1.addEventListener("click", () => {
+  home[0].classList.toggle("none");
+  loader[0].classList.toggle("grid");
+  setTimeout(() => {
+    loader[0].classList.toggle("grid");
+    content[0].classList.toggle("grid");
+  }, 6000);
+});
+
+homeBtn2.addEventListener("click", () => {
+  home[0].classList.toggle("none");
+  loader[0].classList.toggle("grid");
+  setTimeout(() => {
+    loader[0].classList.toggle("grid");
+    content[0].classList.toggle("grid");
+  }, 6000);
+});
+
+homeBtn2.addEventListener("mouseover", () => {
+  homeBtn2.innerHTML = "Точно согласен";
+});
+homeBtn2.addEventListener("mouseout", () => {
+  homeBtn2.innerHTML = "Не согласен";
+});
 
 let punish = [
   {
@@ -87,7 +142,7 @@ let punish = [
     task: "Ну ты попал... Каждые 15 мин опоздания =<br /> обязательное выполнение по запросу за игру<br /> любого желания каждому (в игре). Однако,<br /> желание не должно иметь<br /> критического<br /> влияния на игру (купить куру, купить 1 вард,<br /> 1 стак пыли, принести вещи с базы - норм<br /> примеры). Принятие решение по критичности - <br />путем голосования =)",
     timing: 15,
     punishValue: 1,
-    finalTask: "Итого желайний каждому: ",
+    finalTask: "Итого желаний каждому: ",
   },
   {
     key: 9,
@@ -113,6 +168,7 @@ let punish = [
   { key: 12, task: "Ладно, сегодня мы тебя прощаем." },
 ];
 
+//Опоздание больше часа?
 let pizza = () => {
   deltaDelay > 60
     ? (punish[11].task =
@@ -131,6 +187,8 @@ start[0].addEventListener("click", () => {
   document.getElementById("roll").innerHTML = "";
 
   let rand = Math.floor(1 + Math.random() * (100 + 1 - 1)) * 30;
+  // let rand = 3000;
+  // let rand = 330;
 
   if (choice.checked === true) {
     arrow = document.getElementsByClassName("tasks");
@@ -143,61 +201,92 @@ start[0].addEventListener("click", () => {
 
   let random = rand / 30;
 
-  (random > 89) & (random < 100)
-    ? setTimeout(
-        () =>
-          (document.getElementById("roll").innerHTML =
-            "BIG ROLL SHOT  <a class=number>" + rand / 30 + "</a>"),
-        500
-      )
-    : setTimeout(
-        () =>
-          (document.getElementById("roll").innerHTML =
-            "roll <a class=number>" + rand / 30 + "</a>"),
-        500
-      );
-
   result.value = ((lastRotate / 30) % 12) + 1;
   let num = result.value;
-
-  setTimeout(
-    () =>
-      (document.getElementById("result").innerHTML = "Наказание номер: " + num),
-    3000
-  );
-
-  for (let i = 1; i < 13; i++) {
-    if (i == num) {
-      setTimeout(() => {
-        document.getElementById("punish").innerHTML = punish[i - 1].task;
-        start[0].disabled = false;
-      }, 3500);
-    }
-  }
 
   let calc = Math.floor(Math.floor(deltaDelay) / punish[num - 1].timing);
   let calcPunish = 0;
 
   calc > 1 ? (calcPunish = calc) : (calcPunish = 1);
 
+  random === 100
+    ? // 1) Выпал рандом 100
+      (setTimeout(
+        () =>
+          (document.getElementById("roll").innerHTML =
+            "OMG! НЕВЕРОЯТНО! ROLL <a class=number>" + rand / 30 + "</a>"),
+        500
+      ),
+      date1 > date2
+        ? // 1.1) Есть опоздание
+          setTimeout(() => {
+            document.getElementById("result").innerHTML =
+              "Тебе сегодня нереально повезло,<br /> you are forgiven =)";
+            start[0].disabled = false;
+          }, 3000)
+        : // 1.2) Нет опоздания
+          setTimeout(() => {
+            punishment.innerHTML = "НЕТ НАКАЗАНИЯ, рано еще =)";
+            start[0].disabled = false;
+          }, 3000))
+    : // 2.1) Выпал рандом меньше 100
+      ((random > 89) & (random < 100)
+        ? // 2.1.1) Выпал рандом от 90 до 99
+          setTimeout(
+            () =>
+              (document.getElementById("roll").innerHTML =
+                "BIG ROLL SHOT  <a class=number>" + rand / 30 + "</a>"),
+            500
+          )
+        : // 2.1.2) Выпал рандом от 1 до 89
+          setTimeout(
+            () =>
+              (document.getElementById("roll").innerHTML =
+                "roll <a class=number>" + rand / 30 + "</a>"),
+            500
+          ),
+      // 2.2) Есть ли опоздание?
+      date1 > date2
+        ? // 2.2.1 Есть опоздание
+          num < 12
+          ? // 2.2.1.1) Наказания 1 - 11
+            (setTimeout(
+              () =>
+                (document.getElementById("result").innerHTML =
+                  "Наказание номер: " + num),
+              3000
+            ),
+            setTimeout(() => {
+              document.getElementById("punish").innerHTML =
+                punish[num - 1].task;
+              start[0].disabled = false;
+            }, 3500),
+            setTimeout(() => {
+              punishment.innerHTML =
+                punish[num - 1].finalTask +
+                "<a class=number>" +
+                punish[num - 1].punishValue * calcPunish +
+                "</a>";
+            }, 4000))
+          : // 2.2.1.2) Халява/жесть 12
+            (setTimeout(
+              () =>
+                (document.getElementById("result").innerHTML =
+                  "Наказание номер: " + num),
+              3000
+            ),
+            setTimeout(() => {
+              document.getElementById("punish").innerHTML =
+                punish[num - 1].task;
+              start[0].disabled = false;
+            }, 3500))
+        : // 2.2.2 Нет опоздания
+          setTimeout(() => {
+            punishment.innerHTML = "НЕТ НАКАЗАНИЯ, рано еще =)";
+            start[0].disabled = false;
+          }, 3000));
+
   punishment.innerHTML = "";
-
-  if (date1 > date2) {
-    num < 12
-      ? setTimeout(() => {
-          punishment.innerHTML =
-            punish[num - 1].finalTask +
-            "<a class=number>" +
-            punish[num - 1].punishValue * calcPunish +
-            "</a>";
-        }, 4000)
-      : (punishment.innerHTML = "");
-  } else {
-    setTimeout(() => {
-      punishment.innerHTML = "НЕТ НАКАЗАНИЯ, рано еще =)";
-    }, 4000);
-  }
-
   return false;
 });
 
@@ -208,16 +297,25 @@ start[0].addEventListener("click", () => {
 // 2.1 добавление наказания 13 пицца                                           ok
 // 3 вывод  информации ролл больше 90                                          ok
 // 3.1 анимация ролл больше 90
-// 4 ролл равен 100 - снятие всех наказаний с выводом
-// 5 стартовая страница с правилами игры и выбором игры
-// 6 анимация загрузка игры с логотипом
+// 4 ролл равен 100 - снятие всех наказаний с выводом                          ok
+// 4.1 Анимация ролл = 100
+// 5 стартовая страница с правилами игры                                       ok
+// 5.1 выбор игры на стартовой странице
+// 6 анимация загрузка игры с логотипом                                        ok
 // 7 стилизация чтогдекогда
 // 8 стилизация поле чудес                                                     ok
 // 9 стилизация вывода информации и наказаний                                  ok
-// 10 рендер таймера онлайн
+// 10 рендер таймера онлайн                                                    ok
 // 10.1 добавление цифры дней до старта                                        ok
 // 11 добавление бэка с выбором даты старта по паролю/по 3 паролям
 // 12 добавление информации о обновлении и планах на будующие изменения
-// 13 мобильная версия игры                                                    ok
+// 13 мобильная версия игры
+// 13.1 мобильная версия стартовой страницы и анимации
 // 14 убрать лишний код и logi
 // 15 добавление аудио для игры
+// 16 перевести колесо на грид
+// 17 наказания загружаются в колесо через map
+// 18 колесо наполняется наказаниями рандомно
+// 18.1 анимация наполнения колеса на главной
+// 19 суперигра
+// 20 черный ящик

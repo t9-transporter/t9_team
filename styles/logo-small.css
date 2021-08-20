@@ -1,0 +1,110 @@
+.logo-sm {
+  height: 81px;
+  width: 103px;
+  padding-top: 12px;
+  padding-left: 24px;
+  padding-bottom: 12px;
+
+  /* animation: logo-sm 5s linear; */
+}
+
+/* @keyframes logo-sm {
+  0% {
+    transform: rotateY(0);
+  }
+
+  50% {
+    transform: rotateY(360deg);
+  }
+
+  100% {
+    transform: rotateY(0deg);
+  }
+} */
+
+.team-sm {
+  display: flex;
+  align-items: center;
+  color: #e91616;
+  font-size: 4rem;
+  font-weight: bold;
+  margin-left: 1rem;
+  text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.8);
+}
+
+.shieldOne-sm,
+.shieldTwo-sm,
+.shieldThree-sm {
+  height: 50px;
+  width: 80px;
+}
+.shieldOne-sm:before,
+.shieldOne-sm:after,
+.shieldTwo-sm:before,
+.shieldTwo-sm:after,
+.shieldThree-sm:before,
+.shieldThree-sm:after {
+  content: "";
+  height: 100%;
+  width: 50%;
+  position: absolute;
+  top: 0;
+}
+
+.shieldTwo-sm:before,
+.shieldThree-sm:before {
+  left: -5px;
+  transform: skew(0deg, 27deg);
+  border-top: 5px solid #e91616;
+  border-left: 5px solid #e91616;
+  border-bottom: 5px solid #e91616;
+  background-color: white;
+}
+
+.shieldTwo-sm:after,
+.shieldThree-sm:after {
+  right: -5px;
+  transform: skew(0deg, -27deg);
+  border-top: 5px solid #e91616;
+  border-right: 5px solid #e91616;
+  border-bottom: 5px solid #e91616;
+  background-color: white;
+  box-shadow: 6px 4px 8px -4px;
+}
+
+.shieldOne-sm {
+  position: relative;
+  z-index: 1;
+}
+
+.shieldOne-sm:before {
+  background-color: white;
+  left: -5px;
+  transform: skew(0deg, 27deg);
+  border-top: 5px solid #e91616;
+  border-left: 5px solid #e91616;
+  border-bottom: 6px solid #e91616;
+  box-shadow: 2px 2px 8px;
+}
+
+.shieldOne-sm:after {
+  background-color: white;
+  right: -5px;
+  transform: skew(0deg, -27deg);
+  border-top: 5px solid #e91616;
+  border-right: 5px solid #e91616;
+  border-bottom: 6px solid #e91616;
+  box-shadow: 6px 4px 8px -4px;
+}
+
+.shieldTwo-sm {
+  position: relative;
+  top: -40px;
+  left: -18px;
+}
+
+.shieldThree-sm {
+  position: relative;
+  top: -90px;
+  left: 18px;
+}

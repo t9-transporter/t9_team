@@ -4,23 +4,73 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>T9_Team</title>
     <script defer src="./index.js"></script>
     <link rel="stylesheet" href="./style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
   </head>
   <body>  
-      <div class="content">
+
+    <div class="home">
+
+      <div class="loading-sm">
+        <div class="logo-sm">
+          <div class="shieldOne-sm"></div>
+          <div class="shieldTwo-sm"></div>
+          <div class="shieldThree-sm"></div>
+        </div>
+        <div class="team-sm">T9_Team</div>
+      </div>
+
+      <div id="timerHome"></div>
+    
+      <div class="rules">
+        <h2 class="rulesName">Правила:</h2>
+        <div class="list">
+            <ul class="rules-list">
+          <li class="rules-list-item">Опоздание это плохо. Опоздание должно быть наказано</li>
+          <li class="rules-list-item">Для загрузки барабана наказаний необходимо ознакомится<br /> и согласиться с текущими правилами</li>
+          <li class="rules-list-item">После загрузки барабана для выбора наказания необходимо<br /> его запустить соответствующей кнопкой</li>
+          <li class="rules-list-item">Выбор происходит следующим способом: случайным броском<br /> от 1 до 100 определяется кол-во движений стрелки наказания</li>
+          <li class="rules-list-item">Колесо наказаний автоматически расчитывает итоговое<br /> назакание в соответствии с временем опоздания</li>
+          <li class="rules-list-item">При наличии факта опоздания, вне зависимости от его<br /> времени, значение периода наступающей ответственности<br /> не может быть меньше единицы</li>
+          <li class="rules-list-item">При опоздании более 60 минут сектор барабана №12 <br />заменяется на "КАРУ ИТАЛЬЯНСКУЮ", ибо нет прощения<br /> за данный проступок</li>
+          <li class="rules-list-item">Хотя... Есть 1% шанса на успех...</li>
+          <li class="rules-list-item">Наказание обязательно к исполнению, любые попытки<br /> уйти от ответственности наказываются дополнительным<br /> исправительным наказанием по решению совета старейшин</li>
+        </ul>
+        </div>
+      </div>
+
+      <div class="confirmBtns">
+        <button id="confirmBtn1">Cогласен</button>
+        <button id="confirmBtn2"> Не cогласен</button>
+      </div>
+
+    </div>
+
+
+    
+    <div class="loader">
+      <div class="loading">
+        <div class="logo">
+          <div class="shieldOne"></div>
+          <div class="shieldTwo"></div>
+          <div class="shieldThree"></div>
+        </div>
+        <div class="team">T9_Team</div>
+      </div>
+    </div>
+
+    <div class="content">
         <div class="switcher">
           <form>
             <input id="field" type="radio" name="spin" checked> Поле чудес
-            <input id="what" type="radio" name="spin"> Что?Где?Когда?
+            <input id="what" type="radio" name="spin" disabled> Что?Где?Когда?
           </form>
       </div>
-      <div class="name">Колесо наказаний v1.09</div>
+      <div class="name">Колесо наказаний v2.00 beta</div>
       <div class="spinner">
         <div class="tasks">
           <div class="task-item task-item1">Прощай голда! &#128176</div>
@@ -56,6 +106,6 @@
 
       <div class="book"></div>
       
-      </div>    
+    </div>    
   </body>
 </html>
